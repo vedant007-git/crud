@@ -1,0 +1,47 @@
+<div>
+    <h2>User Form</h2>
+    <form #FormRef="ngForm" (ngSubmit)="saveUser()">
+      <input
+        type="text"
+        name="firstName"
+        [(ngModel)]="userForm.firstName"
+        placeholder="First Name"
+        required
+      />
+  
+      <input
+        type="text"
+        name="lastName"
+        [(ngModel)]="userForm.lastName"
+        placeholder="Last Name"
+        required
+      />
+  
+      <input
+        type="number"
+        name="age"
+        [(ngModel)]="userForm.age"
+        placeholder="Age"
+        required
+      />
+  
+      <button type="submit">Add</button>
+      <button type="button" (click)="resetForm()">Clear</button>
+    </form>
+  </div>
+  
+  <hr />
+  
+  <div>
+    <h2>User List</h2>
+    <ul>
+      @for (item of users; track item) {
+        <li>
+          {{ item.firstName }} {{ item.lastName }} (Age: {{ item.age }})
+          <button (click)="editUser(item)">Edit</button>
+          <button (click)="deleteUser(item.id)">Delete</button>
+        </li>
+      }
+    </ul>
+  </div>
+  
